@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+
+  database:
+    container_name: postgres_db
+    image: postgres:15.4-alpine
+    restart: always
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=tapwd
+      - POSTGRES_DB=test_db
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d test_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - custom
+
+  migrations:
+    build:
+      context: .
+      dockerfile: ./src/migrations/Dockerfile
+    environment:
+      POSTGRES_HOST: database
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: test_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: tapwd
+      IS_DOCKER: 1
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge

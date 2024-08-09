@@ -25,5 +25,6 @@ RUN pip install --no-cache-dir /wheels/*
 COPY ./src/alembic.ini ./alembic.ini
 COPY ./src/migrations ./migrations
 COPY ./src/core ./core
+COPY ./src/database ./database
 
 CMD ["alembic", "upgrade", "head"]
