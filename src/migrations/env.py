@@ -15,7 +15,7 @@ load_dotenv() # мне похуй на этот говнокод
 config = context.config
 
 section = config.config_ini_section
-print(os.environ["IS_DOCKER"])
+
 if os.environ["IS_DOCKER"] == "1":
     config.set_section_option(section, "POSTGRES_HOST", os.environ["POSTGRES_HOST"])
 else:
