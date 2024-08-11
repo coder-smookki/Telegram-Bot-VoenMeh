@@ -19,4 +19,3 @@ Telegram bot for the Ustinov BSTU Voenmekh University. The bot will help you for
    alembic revision --autogenerate 
    alembic upgrade head
    ```
-   Перезапустить докер, чтобы миграции прошли
