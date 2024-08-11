@@ -16,14 +16,8 @@ config = context.config
 
 section = config.config_ini_section
 
-if os.environ["IS_DOCKER"] == "1":
-    config.set_section_option(section, "POSTGRES_HOST", os.environ["POSTGRES_HOST"])
-else:
-    config.set_section_option(section, "POSTGRES_HOST", "127.0.0.1")
-
-config.set_section_option(
-    section, "POSTGRES_PORT", os.environ["POSTGRES_PORT"]
-)
+config.set_section_option(section, "POSTGRES_HOST", os.environ["POSTGRES_HOST"])
+config.set_section_option(section, "POSTGRES_PORT", os.environ["POSTGRES_PORT"])
 config.set_section_option(section, "POSTGRES_DB", os.environ["POSTGRES_DB"])
 config.set_section_option(section, "POSTGRES_USER", os.environ["POSTGRES_USER"])
 config.set_section_option(section, "POSTGRES_PASSWORD", os.environ["POSTGRES_PASSWORD"])

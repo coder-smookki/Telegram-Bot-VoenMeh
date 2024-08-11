@@ -4,12 +4,12 @@ Telegram bot for the Ustinov BSTU Voenmekh University. The bot will help you for
 
 ### Запуск
 
-1. Запуск без миграций:
+1. Запуск миграций:
    ```bash
    docker-compose up --build
    ```
    
-2. Запуск с миграциями:
+2. Миграции:
    ```bash
    docker-compose up --build
    ```
@@ -17,5 +17,6 @@ Telegram bot for the Ustinov BSTU Voenmekh University. The bot will help you for
    ```bash
    cd ./src
    alembic revision --autogenerate 
+   alembic upgrade head
    ```
    Перезапустить докер, чтобы миграции прошли
