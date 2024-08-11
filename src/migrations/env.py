@@ -10,7 +10,7 @@ from database.models.base import AlchemyBaseModel
 
 from dotenv import load_dotenv
 
-load_dotenv() # мне похуй на этот говнокод
+load_dotenv()
 
 config = context.config
 
