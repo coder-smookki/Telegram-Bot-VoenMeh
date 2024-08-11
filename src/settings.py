@@ -35,8 +35,8 @@ def get_settings() -> Settings:
     """
     db = DBSettings(
         host=os.environ["POSTGRES_HOST"],
-        host_port=int(os.environ["POSTGRES_HOST_PORT"]),
-        db=os.environ["POSTGRES_DB_NAME"],
+        host_port=int(os.environ["POSTGRES_PORT"]),
+        db=os.environ["POSTGRES_DB"],
         user=os.environ["POSTGRES_USER"],
         password=os.environ["POSTGRES_PASSWORD"],
     )

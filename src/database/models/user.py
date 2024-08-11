@@ -1,7 +1,7 @@
-from sqlalchemy import BigInteger, Boolean, Integer, String
+from sqlalchemy import BigInteger, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database.models import Role
+from database.models.role import Role
 from database.models.base import AlchemyBaseModel
 
 
@@ -29,5 +29,4 @@ class User(AlchemyBaseModel):
     role: Mapped[list["Role"]] = relationship(
         secondary="users_roles",
         lazy="selectin",
-        default="User"
     )
