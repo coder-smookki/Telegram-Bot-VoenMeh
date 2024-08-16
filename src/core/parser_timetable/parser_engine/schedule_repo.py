@@ -74,7 +74,7 @@ class ScheduleRepo:
     def _time_start_conversion(self, group_data: dict):
         for day in group_data["schedule"]:
             for lesson in day["lessons"]:
-                lesson["time_start"] = time(*[int(i) for i in lesson["time_start"].split(":")])
+                lesson["time_start"] = time.fromisoformat(lesson["time_start"])
 
 
     def _group_data_conversion(self, group_data: dict):
@@ -103,7 +103,7 @@ class ScheduleRepo:
                 
                 self._replace_key_in_dict(lesson, "time_str", "Time")
                 _time_start= lesson["time_str"].split()[0].split(":")
-                lesson["time_start"] = str(time(int(_time_start[0]), int(_time_start[1])))
+                lesson["time_start"] = time(int(_time_start[0]), int(_time_start[1])).isoformat()
                 
                 lesson["lecturers"] = list()
                 if lesson.get("Lecturers") is not None:
