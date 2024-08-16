@@ -1,9 +1,9 @@
 from datetime import date
 
-from schedule_repo import ScheduleRepo
-from dataclass import DayScheduleData
-from utils import get_week_code, get_str_weekday_by_index
-from exceptions import NotFoundWeekdayException
+from parser_engine.schedule_repo import ScheduleRepo
+from parser_engine.dataclass import DayScheduleData
+from parser_engine.utils import get_week_code, get_str_weekday_by_index
+from parser_engine.exceptions import NotFoundWeekdayException
 
 
 async def get_day_schedule(group_name: str, day_date: date) -> DayScheduleData:
@@ -80,3 +80,7 @@ async def get_two_weeks_schedule(group_name: str) -> list[DayScheduleData]:
     group = await ScheduleRepo().get_group_data(group_name)
         
     return group.schedule
+
+
+
+get_day_schedule

@@ -1,3 +1,5 @@
+# TO DO сунуть в переменные окружения, в докер компос
+
 SCHEDULE_URL = 'https://www.voenmeh.ru/templates/jd_atlanta/js/TimetableGroup46.xml'
 
 

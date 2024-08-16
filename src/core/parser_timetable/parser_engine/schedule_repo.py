@@ -30,8 +30,6 @@ class ScheduleRepo:
                 continue
             self._group_data_conversion(group_data)
 
-
-
             await redis_client.set(
                 REDIS_GROUP_PREFIX + group_data["number"],
                 json.dumps(group_data, ensure_ascii=False),
@@ -59,31 +57,7 @@ class ScheduleRepo:
         Raises:
             NotFoundGroupException: Если группа не найденна после обновления данных
 
-        Returns:
-            dict{
-                @Number: О741Б
-                @IdGroup: 3031
-                Days: { 
-                    Day: [{
-                        @Title: Понедельник # день недели
-                        GroupLessons { 
-                            Lesson: [{
-                                DayTitle: Понедельник # день недели
-                                WeekCode: "1" or "2" # четная/нечетная неделя
-                                Time: 9:00 Нечетная # Время начала пары и неделя
-                                Discipline: лек ПИТ. И С++ УЧИТЬ
-                                Lecturers: { # тут может быть и список, думаю это прикол xml
-                                    Lecturer: {
-                                        IdLecturer: 6666
-                                        ShortName: Иванов И.И.
-                                    }
-                                }
-                                Classroom: 666*;
-                            }]
-                        }
-                    }]
-                }
-            }
+        Returns: GroupData
         """
         redis_client = self._get_redis_client()
 
