@@ -1,5 +1,3 @@
-import asyncio
-
 import aiohttp
 import xmltodict
 
@@ -21,7 +19,7 @@ async def parser() -> dict:
             }
             Group: [{
                 @Number: О741Б
-                @IdGroup: 3031
+                @IdGroup: 6666
                 Days: { 
                     Day: [{
                         @Title: Понедельник # день недели
@@ -31,9 +29,11 @@ async def parser() -> dict:
                                 WeekCode: "1" or "2" # четная/нечетная неделя
                                 Time: 9:00 Нечетная # Время начала пары и неделя
                                 Discipline: лек ПИТ. И С++ УЧИТЬ
-                                Lecturers: {
-                                    IdLecturer: 6666
-                                    ShortName: Иванов И.И.
+                                Lecturers: { # тут может быть и список, думаю это прикол xml
+                                    Lecturer: {
+                                        IdLecturer: 6666
+                                        ShortName: Иванов И.И.
+                                    }
                                 }
                                 Classroom: 666*;
                             }]
@@ -60,7 +60,3 @@ async def parser() -> dict:
     await session.close()
 
     return xmltodict.parse(response_content)
-
-
-if __name__ == "__main__": 
-    asyncio.run(parser())
