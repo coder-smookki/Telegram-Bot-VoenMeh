@@ -1,3 +1,5 @@
+# TODO заменить 127.0.0.1 на %(POSTGRES_HOST)s в файле alembic.ini
+
 import os
 from logging.config import fileConfig
 
