@@ -1,9 +1,12 @@
 from datetime import date
 
-from parser_engine.schedule_repo import ScheduleRepo
-from parser_engine.dataclass import DayScheduleData
-from parser_engine.utils import get_week_code, get_str_weekday_by_index
-from parser_engine.exceptions import NotFoundWeekdayException
+from parser_timetable.parser_engine.schedule_repo import ScheduleRepo
+from parser_timetable.parser_engine.dataclass import DayScheduleData
+from parser_timetable.parser_engine.utils import (
+    get_week_code, 
+    get_str_weekday_by_index
+)
+from parser_timetable.parser_engine.exceptions import NotFoundWeekdayException
 
 
 async def get_day_schedule(group_name: str, day_date: date) -> DayScheduleData:

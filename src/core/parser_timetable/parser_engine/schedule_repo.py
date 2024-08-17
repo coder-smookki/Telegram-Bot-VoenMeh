@@ -5,14 +5,14 @@ from redis import asyncio as aioredis
 from redis.asyncio.client import Redis
 from dacite import from_dict
 
-from parser import parser
-from config import (
+from parser_timetable.parser_engine.parser import parser
+from parser_timetable.parser_engine.config import (
     REDIS_HOST, REDIS_PORT,
     REDIS_EXPIRE_TIME,
     REDIS_GROUP_PREFIX, REDIS_PERIOD_KEY,
 )
-from exceptions import NotFoundGroupException
-from dataclass import GroupData
+from parser_timetable.parser_engine.exceptions import NotFoundGroupException
+from parser_timetable.parser_engine.dataclass import GroupData
 
 
 class ScheduleRepo:

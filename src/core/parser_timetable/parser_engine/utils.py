@@ -1,7 +1,7 @@
 from datetime import date
 
-from schedule_repo import ScheduleRepo
-from exceptions import SundayWorkDayException
+from parser_timetable.parser_engine.schedule_repo import ScheduleRepo
+from parser_timetable.parser_engine.exceptions import SundayWorkDayException
 
 
 async def get_week_code(current_date: date):
