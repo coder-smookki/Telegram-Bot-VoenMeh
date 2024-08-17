@@ -1,7 +1,7 @@
 import aiohttp
 import xmltodict
 
-from config import SCHEDULE_URL
+from parser_timetable.parser_engine.config import SCHEDULE_URL
 
 
 async def parser() -> dict:
