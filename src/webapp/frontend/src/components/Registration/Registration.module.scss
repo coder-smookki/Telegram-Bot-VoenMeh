@@ -1,0 +1,29 @@
+.center.centered {
+    justify-content: center;
+}
+.center {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.centered_text {
+    font-size: 3em;font-weight: bold;margin: 0 auto;vertical-align: middle;text-align: center;white-space: break-spaces;
+}
+.btn {
+    width: 90%;
+}
+.bottom {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    bottom: 2em;
+    left: 0;
+    position: fixed;
+    justify-content: center;
+    .bottom_nav {
+        max-width: 768px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}

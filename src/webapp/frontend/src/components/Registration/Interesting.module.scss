@@ -1,0 +1,19 @@
+.buttonsinteresting {
+	display: flex;
+	flex-direction: column;
+	.btn {
+		width: 50%;
+	}
+	.btn + .btn {
+		margin-left: 0.5em;
+	}
+	.firstrow {
+		display: flex;
+	}
+	.secondrow {
+		display:flex;
+		align-items: center;
+		text-align: center;
+		justify-content: center;
+	}
+}

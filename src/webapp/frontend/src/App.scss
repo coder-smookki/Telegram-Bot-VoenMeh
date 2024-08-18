@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#app {
+    background: #fff;
+    color: #000;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 768px;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 1;
+    user-select: none;
+}

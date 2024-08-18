@@ -1,0 +1,9 @@
+.ButtonsGender {
+	display: flex;
+	.btn {
+		width: 50%;
+	}
+	.btn + .btn {
+		margin-left: 0.5em;
+	}
+}
