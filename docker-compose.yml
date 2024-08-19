@@ -1,6 +1,23 @@
 version: "3.8"
 services:
 
+  bot:
+    image: telegram-bot-voenmeh
+    container_name: voenmeh
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./bot/Dockerfile
+    volumes:
+      - "/var/voenmeh-bot/logs:/app/logs"
+    env_file: .env
+    environment:
+      TESSERACT_PATH: "/usr/bin/tesseract"
+      PYTHONUNBUFFERED: 1
+      PYTHONDONTWRITEBYTECODE: 1
+    links:
+      - database
+
   database:
     container_name: postgres_db
     image: postgres:15.4-alpine
