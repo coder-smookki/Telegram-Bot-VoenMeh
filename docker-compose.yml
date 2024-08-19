@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     build:
       context: .
-      dockerfile: ./bot/Dockerfile
+      dockerfile: ./src/bot/Dockerfile
     volumes:
       - "/var/voenmeh-bot/logs:/app/logs"
     env_file: .env
