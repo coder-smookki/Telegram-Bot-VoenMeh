@@ -1,20 +1,37 @@
-import sqlalchemy as sa
-from sqlalchemy.ext.asyncio import AsyncSession
+from enum import Enum
+from typing import Optional, Union
+
+from sqlalchemy import select
 
 from database.models.role import Role
-from core.schemas.role import RoleDTO
+from database.repositories.base_repo import BaseRepository
+from bot.utils.enums import RoleEnum
 
 
-class RoleRepository:
-    def __init__(self, session: AsyncSession) -> None:
-        self._session = session
+class RoleRepository(BaseRepository):
+    """Класс для работы с ролями в базе данных."""
 
-    async def get_role_by_id(self, role_id: int) -> RoleDTO | None:
-        query = sa.select(Role).where(Role.id == role_id)
-        scalar: Role | None = await self._session.scalar(query)
-        return RoleDTO.model_validate(scalar) if scalar is not None else None
+    async def get(
+        self,
+        role: "Union[RoleEnum | str]",
+    ) -> "Optional[Role]":
+        """
+        Возвращает модель Role по названию роли.
 
-    async def get_role_by_name(self, role_name: str) -> RoleDTO | None:
-        query = sa.select(Role).where(Role.role == role_name)
-        scalar: Role | None = await self._session.scalar(query)
-        return RoleDTO.model_validate(scalar) if scalar is not None else None
+        :param role: Название роли.
+        :return: Модель Role.
+        """
+        if isinstance(role, Enum):
+            role = role.value
+
+        query = select(Role).where(Role.role == role)
+        return await self._session.scalar(query)
+
+    async def get_all(self) -> list["Role"]:
+        """
+        Возвращает все роли из базы данных.
+
+        :return: Список моделей Role.
+        """
+        query = select(Role).order_by(Role.id)
+        return await self.select_query_to_list(query)

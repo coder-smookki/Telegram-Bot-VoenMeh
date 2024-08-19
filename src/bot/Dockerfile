@@ -23,9 +23,8 @@ COPY --from=builder /app/wheels /wheels
 RUN pip install --no-cache-dir /wheels/*
 
 COPY ./src/bot ./bot
-COPY ./src/maps ./maps
-COPY ./src/shared ./shared
-COPY ./src/parser ./parser
+COPY ./src/core ./core
+COPY ./src/database ./database
 COPY ./src/settings.py ./settings.py
 
 CMD ["python", "-m", "bot"]
